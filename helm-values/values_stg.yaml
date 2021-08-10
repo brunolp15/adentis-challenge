@@ -1,0 +1,27 @@
+deployment:
+  replicasv1: 9
+  replicasv2: 1
+  imagev1: gcr.io/active-premise-322523/go-app:v1.0.0
+  imagev2: gcr.io/active-premise-322523/go-app:v2.0.0
+  resources:
+    requests:
+      cpu: 500m
+      memory: 500m
+    limits:
+      cpu: "1"
+      memory: "1Gi"
+
+hpa:
+  enabled: false
+  minReplicas: 9
+  maxReplicas: 18
+  targetCPUUtilizationPercentage: 75
+  targetMemoryUtilization: "0.6Gi"
+
+
+service:
+  type: NodePort
+  ports:
+    port: 80
+    protocol: TCP
+    targetPort: 8090
