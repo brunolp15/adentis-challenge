@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-stable
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.deployment.replicasv1 }}
+  selector:
+    matchLabels:
+      name: {{ .Release.Name }}-stable
+      app: {{ .Release.Name }}
+      version: v1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate    
+  template:
+    metadata:
+      labels:
+        name: {{ .Release.Name }}-stable
+        app: {{ .Release.Name }}
+        version: v1
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: {{ .Release.Name }}-stable
+          image: {{ .Values.deployment.imagev1 }}
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8090
+              protocol: TCP
+          resources:
+            limits:
+              cpu: {{ .Values.deployment.resources.limits.cpu }}
+              memory: {{ .Values.deployment.resources.limits.memory }}
+            requests:
+              cpu: {{ .Values.deployment.resources.requests.cpu }}
+              memory: {{ .Values.deployment.resources.requests.memory }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-canary-v2
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.deployment.replicasv2 }}
+  selector:
+    matchLabels:
+      name: {{ .Release.Name }}-canary-v2
+      app: {{ .Release.Name }}
+      version: v2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate    
+  template:
+    metadata:
+      labels:
+        name: {{ .Release.Name }}-canary-v2
+        app: {{ .Release.Name }}
+        version: v2
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: {{ .Release.Name }}-canary-v2
+          image: {{ .Values.deployment.imagev2 }}
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8090
+              protocol: TCP
+          resources:
+            limits:
+              cpu: {{ .Values.deployment.resources.limits.cpu }}
+              memory: {{ .Values.deployment.resources.limits.memory }}
+            requests:
+              cpu: {{ .Values.deployment.resources.requests.cpu }}
+              memory: {{ .Values.deployment.resources.requests.memory }}
