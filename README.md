@@ -52,37 +52,9 @@ kubectl apply -f production.yaml
 
 ## Access the Application ##
 
-1 - You can check the deployment by using the command:
+You can check the deployment by using the command:
 ```bash
 while true; do curl 34.123.51.158/hello; sleep 1; done     
-```
-
-2 - An executing exemple can saw bellow:
-```bash
-$ while true; do curl 34.123.51.158/hello; sleep 1; done 
-Hello
-Hello. I’m v2
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello. I’m v2
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello
-Hello. I’m v2
-Hello
-Hello
 ```
 
 ## References ##
