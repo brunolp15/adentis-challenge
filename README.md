@@ -54,9 +54,10 @@ kubectl apply -f production.yaml
 
 You can check the deployment by using the command:
 ```bash
-while true; do curl 34.123.51.158/hello; sleep 1; done     
+while true; do curl 35.184.173.190/hello; sleep 1; done     
 ```
 
 ## References ##
 - https://cloud.google.com/container-registry/docs/pushing-and-pulling
 - https://cloud.google.com/container-registry/docs/advanced-authentication#json-key
+- https://helm.sh/docs/helm/helm_template/
