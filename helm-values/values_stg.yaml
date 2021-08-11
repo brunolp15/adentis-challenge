@@ -16,7 +16,7 @@ hpa:
   minReplicas: 9
   maxReplicas: 18
   targetCPUUtilizationPercentage: 75
-  targetMemoryUtilization: "0.6Gi"
+  targetMemoryUtilizationPercentage: 75
 
 
 service:

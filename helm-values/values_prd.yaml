@@ -16,7 +16,7 @@ hpa:
   minReplicas: 9
   maxReplicas: 18
   targetCPUUtilizationPercentage: 75
-  targetMemoryUtilization: "750m"
+  targetMemoryUtilizationPercentage: 75
 
 service:
   type: LoadBalancer
