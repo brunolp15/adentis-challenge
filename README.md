@@ -42,7 +42,7 @@ docker push gcr.io/PROJECT-ID/go-app:TAG
 
 1 - Generate the Kubernetes manifest by using the command:
 ```bash
-helm template app -n go-application go-app/ -f helm-values/values_prd.yaml >> production.yaml     
+helm template app --namespace go-application go-app/ -f helm-values/values_prd.yaml >> production.yaml     
 ```
 
 2 - Apply the generated manifest by using the command:
@@ -52,10 +52,13 @@ kubectl apply -f production.yaml
 
 ## Access the Application ##
 
-You can check the deployment accessing:
+You can check the deployment by using the command:
 ```bash
-https://adentischallenge.ddns.net/hello     
+while true; do curl https://adentischallenge.ddns.net/hello; sleep 1; done     
 ```
+You can check also by the link:
+
+<https://adentischallenge.ddns.net/hello>
 
 ## References ##
 - https://cloud.google.com/container-registry/docs/pushing-and-pulling
