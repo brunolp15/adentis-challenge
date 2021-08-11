@@ -52,9 +52,9 @@ kubectl apply -f production.yaml
 
 ## Access the Application ##
 
-You can check the deployment by using the command:
+You can check the deployment accessing:
 ```bash
-while true; do curl 35.184.173.190/hello; sleep 1; done     
+https://adentischallenge.ddns.net/hello     
 ```
 
 ## References ##
