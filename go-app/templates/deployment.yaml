@@ -31,6 +31,15 @@ spec:
             - name: http
               containerPort: 8090
               protocol: TCP
+          readinessProbe:
+            failureThreshold: {{ .Values.deployment.readinessProbe.failureThreshold }}
+            httpGet:
+              path: {{ .Values.deployment.readinessProbe.httpGet.path }}
+              port: {{ .Values.deployment.readinessProbe.httpGet.port }}
+              scheme: {{ .Values.deployment.readinessProbe.httpGet.scheme }}
+            periodSeconds: {{ .Values.deployment.readinessProbe.periodSeconds }}
+            successThreshold: {{ .Values.deployment.readinessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.deployment.readinessProbe.timeoutSeconds }}    
           resources:
             limits:
               cpu: {{ .Values.deployment.resources.limits.cpu }}
@@ -72,6 +81,15 @@ spec:
             - name: http
               containerPort: 8090
               protocol: TCP
+          readinessProbe:
+            failureThreshold: {{ .Values.deployment.readinessProbe.failureThreshold }}
+            httpGet:
+              path: {{ .Values.deployment.readinessProbe.httpGet.path }}
+              port: {{ .Values.deployment.readinessProbe.httpGet.port }}
+              scheme: {{ .Values.deployment.readinessProbe.httpGet.scheme }}
+            periodSeconds: {{ .Values.deployment.readinessProbe.periodSeconds }}
+            successThreshold: {{ .Values.deployment.readinessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.deployment.readinessProbe.timeoutSeconds }}     
           resources:
             limits:
               cpu: {{ .Values.deployment.resources.limits.cpu }}

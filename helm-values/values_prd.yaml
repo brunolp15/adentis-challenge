@@ -10,6 +10,15 @@ deployment:
     limits:
       cpu: "1"
       memory: 1Gi
+  readinessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /hello
+      port: 8090
+      scheme: HTTP
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 10
 
 hpa:
   enabled: true
@@ -19,8 +28,17 @@ hpa:
   targetMemoryUtilizationPercentage: 75
 
 service:
-  type: LoadBalancer
+  type: NodePort
   ports:
     port: 80
     protocol: TCP
     targetPort: 8090
+
+ingress:
+  staticIpName: ingress-ip
+  ingressClass: "gce"
+  path: /*
+  pathType: ImplementationSpecific
+
+ManagedCertificate:
+    domains: adentischallenge.ddns.net
